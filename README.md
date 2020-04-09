@@ -1,6 +1,9 @@
 # 使用方法
 
 ```JavaScript
+
+npm i zx-local
+
 import Local from 'zx-local';
 
 const local = new Local();
