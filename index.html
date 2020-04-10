@@ -14,19 +14,19 @@
         <button onclick="rembutton()"> 删除</button>
     </div>
 </body>
-<script src="./js/index.js"></script>
+<script src="./dist/zxlocalStorage.bundle.js"></script>
 <script>
-    window.zxLocalStorage = new Localstorage('test');
+    window.zxLocalStorage = new Localstorage();
     // zxLocalStorage.setItem("ceshi", 1)
-    zxLocalStorage.tehaha = 2
-    console.log(zxLocalStorage)
+    zxLocalStorage.setName("test")
+    zxLocalStorage.dispatchEventStroage();
     const addbutton = () => {
-        zxLocalStorage.setItem("button", { name: "我是按钮", value: "2" })
-        zxLocalStorage.setItem("buttonarr", [1,2,3])
+        localstorage.setItem("button", { name: "我是按钮", value: "2" })
+        localstorage.setItem("buttonarr", [1,2,3])
     }
     const rembutton = () => {
-        zxLocalStorage.removeItem("button")
-        zxLocalStorage.removeItem("buttonarr")
+        localstorage.removeItem("button")
+        localstorage.removeItem("buttonarr")
     }
 </script>
 

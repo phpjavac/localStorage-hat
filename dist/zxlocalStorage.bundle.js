@@ -36,19 +36,32 @@ var Localstorage = /*#__PURE__*/function () {
     key: "dispatchEventStroage",
     value: function dispatchEventStroage() {
       var signSetItem = localStorage.setItem;
+      var signRemoveItem = localStorage.removeItem;
       var that = this;
-      /** 重写增 */
 
       localStorage.setItem = function (key) {
         arguments[0] = "".concat(that.name, "-").concat(key);
         signSetItem.apply(this, arguments);
       };
-      /** 重写查 */
-
 
       localStorage.getItem = function (key) {
         var value = "".concat(that.name, "-").concat(key);
         return this[value];
+      };
+
+      localStorage.removeItem = function (key) {
+        arguments[0] = "".concat(that.name, "-").concat(key);
+        signRemoveItem.apply(this, arguments);
+      };
+
+      localStorage.clear = function () {
+        for (var _i = 0, _Object$keys = Object.keys(this); _i < _Object$keys.length; _i++) {
+          var iterator = _Object$keys[_i];
+
+          if (iterator.includes("".concat(that.name, "-"))) {
+            delete this[iterator];
+          }
+        }
       };
     }
   }]);
