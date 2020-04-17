@@ -16,6 +16,11 @@ class Localstorage {
       localStorage.setItem = function (key) {
         arguments[0] = `${that.name}-${key}`;
         signSetItem.apply(this, arguments);
+        Object.defineProperty(localStorage, `${key}`, {
+          get: function () {
+            return localStorage.getItem(key)
+          }
+        })
       };
       localStorage.getItem = function (key) {
         const value = `${that.name}-${key}`;

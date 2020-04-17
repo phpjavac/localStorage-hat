@@ -42,6 +42,11 @@ var Localstorage = /*#__PURE__*/function () {
       localStorage.setItem = function (key) {
         arguments[0] = "".concat(that.name, "-").concat(key);
         signSetItem.apply(this, arguments);
+        Object.defineProperty(localStorage, "".concat(key), {
+          get: function get() {
+            return localStorage.getItem(key);
+          }
+        });
       };
 
       localStorage.getItem = function (key) {
